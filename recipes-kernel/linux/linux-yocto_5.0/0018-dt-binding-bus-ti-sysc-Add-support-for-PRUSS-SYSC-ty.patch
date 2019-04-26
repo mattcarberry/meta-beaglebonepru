@@ -1,0 +1,52 @@
+From 4fa567b77681db51313528313db6b79c5fa437af Mon Sep 17 00:00:00 2001
+From: Roger Quadros <rogerq@ti.com>
+Date: Mon, 4 Feb 2019 16:58:39 +0200
+Subject: [PATCH 18/26] dt-binding: bus: ti-sysc: Add support for PRUSS SYSC
+ type
+
+The PRUSS module has a SYSCFG which is unique. Add
+support for it.
+
+Signed-off-by: Roger Quadros <rogerq@ti.com>
+---
+ Documentation/devicetree/bindings/bus/ti-sysc.txt |  1 +
+ include/dt-bindings/bus/ti-sysc.h                 | 11 +++++++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/bus/ti-sysc.txt b/Documentation/devicetree/bindings/bus/ti-sysc.txt
+index 85a23f5..fe1dfb1 100644
+--- a/Documentation/devicetree/bindings/bus/ti-sysc.txt
++++ b/Documentation/devicetree/bindings/bus/ti-sysc.txt
+@@ -38,6 +38,7 @@ Required standard properties:
+ 		"ti,sysc-dra7-mcasp"
+ 		"ti,sysc-usb-host-fs"
+ 		"ti,sysc-dra7-mcan"
++		"ti,sysc-pruss"
+ 
+ - reg		shall have register areas implemented for the interconnect
+ 		target module in question such as revision, sysc and syss
+diff --git a/include/dt-bindings/bus/ti-sysc.h b/include/dt-bindings/bus/ti-sysc.h
+index 7138384..8ec78e8 100644
+--- a/include/dt-bindings/bus/ti-sysc.h
++++ b/include/dt-bindings/bus/ti-sysc.h
+@@ -17,6 +17,17 @@
+ 
+ #define SYSC_DRA7_MCAN_ENAWAKEUP	(1 << 4)
+ 
++/* SYSCONFIG specific to PRUSS */
++#define SYSC_PRUSS_SUB_MWAIT		(1 << 5)
++#define SYSC_PRUSS_STANDBY_INIT		(1 << 4)
++
++#define SYSC_PRUSS_STANDBY_FORCE	(0 << 2)
++#define SYSC_PRUSS_STANDBY_NO		(1 << 2)
++#define SYSC_PRUSS_STANDBY_SMART	(2 << 2)
++#define SYSC_PRUSS_STANDBY_MASK		(3 << 2)
++
++#define SYSC_PRUSS_IDLE_MASK		3
++
+ /* SYSCONFIG STANDBYMODE/MIDLEMODE/SIDLEMODE supported by hardware */
+ #define SYSC_IDLE_FORCE			0
+ #define SYSC_IDLE_NO			1
+-- 
+1.8.3.1
+

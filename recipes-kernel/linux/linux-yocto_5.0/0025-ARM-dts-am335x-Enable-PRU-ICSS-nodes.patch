@@ -1,0 +1,69 @@
+From 85c24ed7aef0c6bc71a83649a912ac04e3c62df3 Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Tue, 30 Jan 2018 13:40:45 -0600
+Subject: [PATCH 25/26] ARM: dts: am335x-*: Enable PRU-ICSS nodes
+
+The PRU-ICSS processor bus node and subsystem nodes were left in
+disabled state in the base am33xx.dtsi file. PRU-ICSS is supported
+on these AM335x boards so enable the PRUSS node.
+
+Signed-off-by: Suman Anna <s-anna@ti.com>
+Signed-off-by: Roger Quadros <rogerq@ti.com>
+---
+ arch/arm/boot/dts/am335x-bone-common.dtsi | 4 ++++
+ arch/arm/boot/dts/am335x-evm.dts          | 4 ++++
+ arch/arm/boot/dts/am335x-evmsk.dts        | 4 ++++
+ arch/arm/boot/dts/am335x-icev2.dts        | 4 ++++
+ 4 files changed, 16 insertions(+)
+
+diff --git a/arch/arm/boot/dts/am335x-bone-common.dtsi b/arch/arm/boot/dts/am335x-bone-common.dtsi
+index 456eef5..d7c997f 100644
+--- a/arch/arm/boot/dts/am335x-bone-common.dtsi
++++ b/arch/arm/boot/dts/am335x-bone-common.dtsi
+@@ -422,3 +422,7 @@
+ 	clocks = <&clk_32768_ck>, <&clk_24mhz_clkctrl AM3_CLK_24MHZ_CLKDIV32K_CLKCTRL 0>;
+ 	clock-names = "ext-clk", "int-clk";
+ };
++
++&pruss {
++	status = "okay";
++};
+diff --git a/arch/arm/boot/dts/am335x-evm.dts b/arch/arm/boot/dts/am335x-evm.dts
+index dce5be5..0450245 100644
+--- a/arch/arm/boot/dts/am335x-evm.dts
++++ b/arch/arm/boot/dts/am335x-evm.dts
+@@ -800,3 +800,7 @@
+ 	clocks = <&clk_32768_ck>, <&clk_24mhz_clkctrl AM3_CLK_24MHZ_CLKDIV32K_CLKCTRL 0>;
+ 	clock-names = "ext-clk", "int-clk";
+ };
++
++&pruss {
++	status = "okay";
++};
+diff --git a/arch/arm/boot/dts/am335x-evmsk.dts b/arch/arm/boot/dts/am335x-evmsk.dts
+index b128998..0435e46 100644
+--- a/arch/arm/boot/dts/am335x-evmsk.dts
++++ b/arch/arm/boot/dts/am335x-evmsk.dts
+@@ -741,3 +741,7 @@
+ 	clocks = <&clk_32768_ck>, <&clk_24mhz_clkctrl AM3_CLK_24MHZ_CLKDIV32K_CLKCTRL 0>;
+ 	clock-names = "ext-clk", "int-clk";
+ };
++
++&pruss {
++	status = "okay";
++};
+diff --git a/arch/arm/boot/dts/am335x-icev2.dts b/arch/arm/boot/dts/am335x-icev2.dts
+index f2005ec..b36699c 100644
+--- a/arch/arm/boot/dts/am335x-icev2.dts
++++ b/arch/arm/boot/dts/am335x-icev2.dts
+@@ -504,3 +504,7 @@
+ 		reg = <3>;
+ 	};
+ };
++
++&pruss {
++	status = "okay";
++};
+-- 
+1.8.3.1
+
